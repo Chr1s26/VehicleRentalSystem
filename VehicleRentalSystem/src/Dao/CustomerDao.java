@@ -1,11 +1,13 @@
 package Dao;
 
+import java.util.List;
+
 import Model.Customer;
 
 public interface CustomerDao {
 
-	void addCustomer(Customer customer);
+	void create(Customer customer);
 	Customer findCustomerByName(String name);
-	Customer[] getAllCustomer();
+	List<Customer> getAllCustomer();
 
 }

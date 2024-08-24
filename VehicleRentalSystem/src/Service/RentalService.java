@@ -16,17 +16,20 @@ public class RentalService extends BaseService {
 	
 	private VehicleDao vehicleDao;
 	private CustomerDao customerDao;
+	private CustomerRegistrationService customerRegistrationService;
 	private RentalDao rentalDao;
 	private Rental rental;
 	   
 	public RentalService() {
-		vehicleDao = new VehicleDaoImp();
-		customerDao = new CustomerDaoImp();
-		rentalDao = new RentalDaoImp();
+		this.vehicleDao = new VehicleDaoImp();
+		this.customerDao = new CustomerDaoImp();
+		this.rentalDao = new RentalDaoImp();
+		this.customerRegistrationService = new CustomerRegistrationService();
 	}
 
 	public void rentVehicle() throws IOException {
-		rental = new Rental();
+		rental = new Rental(); // static type
+		this.customerRegistrationService.createCustomer();
 		this.displayCustomer();
 		this.selectCustomer();
 		this.displayVehicle();
@@ -41,7 +44,7 @@ public class RentalService extends BaseService {
 				this.rentVehicle();
 			}
 		this.displayRentVehicle();
-		}
+	}
 		
 	
 	public void displayCustomer() {
